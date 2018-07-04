@@ -1,10 +1,11 @@
 self.addEventListener('install', function (event) {
   // Perform install steps
 });
+const CACHE_NAME ='review5';
 self.addEventListener('install', function(event) {
   event.waitUntil(
     
-    caches.open('review5').then(function(cache) {
+    caches.open(CACHE_NAME).then(function(cache) {
       return cache.addAll([
         '/',
   './index.html',
@@ -32,11 +33,20 @@ self.addEventListener('install', function(event) {
 
 
 self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request).then(function(response) {
-      return response || fetch(event.request);
-    })
-  );
+  event.respondWith(caches.match(event.request).then(function (res) {//search the cache
+    if (res !== undefined) {
+      return res; //Got it from cache, return it immediatelly!
+    } else {
+      return fetch(event.request).then(function (res) { // not in cache, fetch it
+        var responseClone = res.clone(); // clone the response
+        caches.open(CACHE_NAME).then(function (cache) {//CACHE_NAME is the const i am mentioning on the upper most comment.
+          cache.put(event.request, responseClone); // add it to cache
+        });
+        return res; // return it
+      });
+    }
+  }));
 });
+
 
 

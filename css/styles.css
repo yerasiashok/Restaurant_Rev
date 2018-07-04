@@ -176,7 +176,7 @@ background-color: aliceblue;
   justify-content: space-around;
 }
 #restaurants-list li {
-  display: flex;
+  
   flex-direction: column;
   background-color: #fff;
   border: 2px solid #ccc;
