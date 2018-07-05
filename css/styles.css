@@ -171,7 +171,7 @@ background-color: aliceblue;
   background-color: #f3f3f3;
   list-style: outside none none;
   margin: 0;
-  padding: 30px 125px 30px;
+  padding: 10px 10px 10px;
   text-align: center;
   justify-content: space-around;
 }
@@ -181,17 +181,18 @@ background-color: aliceblue;
   background-color: #fff;
   border: 2px solid #ccc;
   font-family: Arial,sans-serif;
-  margin: 15px;
+  margin-bottom: 15px;
   min-height: 380px;
-  padding: 0 30px 25px;
+  padding: 0 3px 25px;
   text-align: left;
   width: 270px;
 }
 #restaurants-list .restaurant-img {
-  background-color: #ccc;
+  
   display: block;
   margin: 0;
  width: 100%;
+ padding: 10px 1px 10px 1px;
 }
 #restaurants-list li h1 {
   color: #f18200;
@@ -225,6 +226,16 @@ background-color: aliceblue;
    #restaurants-list li{
     justify-content: space-around;
     width:110px;
+   flex-direction: column;
+  
+  }
+  
+} 
+
+@media screen and (max-width: 375px) {
+   #restaurants-list li{
+    justify-content: space-around;
+    width:100%;
    flex-direction: column;
   
   }
